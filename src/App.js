@@ -3,6 +3,7 @@ import Header from "components/Homepage/Header/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "utils/theme";
+import Banner from "components/Homepage/Banner/Banner";
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 			<ThemeProvider theme={theme}>
 				<Router>
 					<Header />
+					<Banner />
 					<Switch></Switch>
 				</Router>
 			</ThemeProvider>
