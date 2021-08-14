@@ -208,7 +208,7 @@ const Introduction = () => {
 									color="textSecondary"
 									component="p"
 								>
-									Cùng Kids MONA khám phá tiềm năng của con trẻ
+									Cùng chúng tôi khám phá tiềm năng của con trẻ
 								</Typography>
 							</CardContent>
 						</Card>

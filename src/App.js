@@ -5,6 +5,9 @@ import { ThemeProvider } from "@material-ui/styles";
 import theme from "utils/theme";
 import Banner from "components/Homepage/Banner/Banner";
 import Introduction from "components/Homepage/Introduction/Introduction";
+import About from "components/Homepage/About/About";
+import Testimonial from "components/Homepage/Testimonial/Testimonial";
+import Activity from "components/Homepage/Activity/Activity";
 
 function App() {
 	return (
@@ -14,6 +17,9 @@ function App() {
 					<Header />
 					<Banner />
 					<Introduction />
+					<About />
+					<Testimonial />
+					<Activity />
 					<Switch></Switch>
 				</Router>
 			</ThemeProvider>
