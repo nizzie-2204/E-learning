@@ -8,6 +8,7 @@ import Introduction from "components/Homepage/Introduction/Introduction";
 import About from "components/Homepage/About/About";
 import Testimonial from "components/Homepage/Testimonial/Testimonial";
 import Activity from "components/Homepage/Activity/Activity";
+import News from "components/News/News";
 
 function App() {
 	return (
@@ -18,8 +19,9 @@ function App() {
 					<Banner />
 					<Introduction />
 					<About />
-					<Testimonial />
+					<News />
 					<Activity />
+					<Testimonial />
 					<Switch></Switch>
 				</Router>
 			</ThemeProvider>

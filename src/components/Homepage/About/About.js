@@ -67,7 +67,7 @@ const About = () => {
 					<Grid item md={6} className={classes.aboutDesc}>
 						<div className="desc">
 							<Typography variant="h2" className={classes.title}>
-								Hệ thống mầm non quốc tế
+								Hệ thống tiểu học quốc tế
 							</Typography>
 							<Typography variant="body2" className={classes.content}>
 								Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng vào
