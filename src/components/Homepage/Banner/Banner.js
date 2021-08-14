@@ -6,10 +6,11 @@ import { makeStyles } from "@material-ui/styles";
 import bgImage1 from "assets/images/slider1.jpg";
 import { Button, Typography } from "@material-ui/core";
 import Fade from "react-reveal/Fade";
+
 const bannerStyle = makeStyles({
 	banner: {
 		marginTop: "89px",
-		height: "calc(100vh - 89px)",
+		height: "700px",
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
@@ -17,8 +18,8 @@ const bannerStyle = makeStyles({
 	container: {
 		height: "100%",
 		backgroundImage: `url(${bgImage1})`,
-		backgroundPosition: "contain",
-		backgroundSize: "100% 100%",
+		backgroundPosition: "cover",
+		backgroundRepeat: "no-repeat",
 	},
 	content: {
 		width: "70%",
