@@ -28,6 +28,7 @@ const newsStyles = makeStyles((theme) => ({
 	},
 	root: {
 		maxWidth: 345,
+		height: "100%",
 		"&:hover": {
 			border: "1px solid #e91e63;",
 		},
