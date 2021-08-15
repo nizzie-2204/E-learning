@@ -19,6 +19,7 @@ const bannerStyle = makeStyles({
 		height: "100%",
 		backgroundImage: `url(${bgImage1})`,
 		backgroundPosition: "cover",
+		backgroundSize: "100% 100%",
 		backgroundRepeat: "no-repeat",
 	},
 	content: {
@@ -49,8 +50,8 @@ const bannerStyle = makeStyles({
 		backgroundColor: "#ffb607",
 		borderRadius: "20px",
 		"&:hover": {
-			backgroundColor: "#fff",
 			color: "#ffb607",
+			backgroundColor: "#fff",
 		},
 	},
 });

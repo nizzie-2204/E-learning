@@ -8,7 +8,7 @@ import image4 from "assets/images/academy.png";
 
 const aboutStyles = makeStyles((theme) => ({
 	about: {
-		padding: "20px 0",
+		padding: "40px 0",
 	},
 	title: {
 		fontSize: "50px",
@@ -34,7 +34,7 @@ const aboutStyles = makeStyles((theme) => ({
 		width: "85px",
 		height: "85px",
 		borderRadius: "100%",
-		backgroundColor: "#ffb607",
+		backgroundColor: "#3ab64c",
 		marginRight: "20px",
 		display: "flex",
 		alignItems: "center",
@@ -94,7 +94,12 @@ const About = () => {
 								</div>
 							</div>
 							<div className={classes.item}>
-								<div className={classes.itemImage}>
+								<div
+									className={classes.itemImage}
+									style={{
+										backgroundColor: "#3db2d5",
+									}}
+								>
 									<img src={image3} alt="education" />
 								</div>
 								<div className={classes.itemInfo}>
@@ -109,7 +114,10 @@ const About = () => {
 								</div>
 							</div>
 							<div className={classes.item}>
-								<div className={classes.itemImage}>
+								<div
+									className={classes.itemImage}
+									style={{ backgroundColor: "#dd1146" }}
+								>
 									<img src={image4} alt="education" />
 								</div>
 								<div className={classes.itemInfo}>

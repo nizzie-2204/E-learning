@@ -1,34 +1,43 @@
+import React from "react";
+import Header from "components/Homepage/Header/Header";
+import { Helmet } from "react-helmet";
+import Breadcrumb from "components/Homepage/Breadcrumb/Breadcrumb";
 import {
 	Card,
 	CardContent,
 	CardMedia,
 	Container,
-	Grid,
 	Typography,
 } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 
-import { makeStyles } from "@material-ui/styles";
 import image1 from "assets/images/hoclichsuobaotang.jpg";
 import image3 from "assets/images/jpj_WKWQ.jpg";
 import image2 from "assets/images/SG200481.jpg";
-import React from "react";
+import { makeStyles } from "@material-ui/styles";
+import { Grid } from "@material-ui/core";
+import Footer from "components/Homepage/Footer/Footer";
 
-const newsStyles = makeStyles((theme) => ({
-	news: {
-		padding: "40px 0",
+const useStyles = makeStyles((theme) => ({
+	container: {
+		padding: "100px 0",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "center",
 	},
-	newsTitle: {
+	title: {
 		width: "100%",
 		fontSize: "48px",
 		fontWeight: "700",
 		textAlign: "center",
 		color: "#000",
 		marginBottom: "60px",
+		textTransform: "capitalize",
 	},
 	root: {
 		maxWidth: 345,
-		height: "100%",
+		textAlign: "center",
 		textDecoration: "none",
 		boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
 		transition: "all 0.1s cubic-bezier(.25,.8,.25,1)",
@@ -75,14 +84,30 @@ const newsStyles = makeStyles((theme) => ({
 	},
 }));
 
-const News = () => {
-	const classes = newsStyles();
+const Admission = () => {
+	const links = [
+		{
+			title: "Trang chủ",
+			path: "/",
+		},
+		{
+			title: "Tuyển sinh",
+			path: "/admission",
+		},
+	];
+	const classes = useStyles();
 
 	return (
-		<div className={classes.news}>
-			<Container maxWidth="xl">
-				<Typography className={classes.newsTitle} variant="h2">
-					Tin tức tháng 10
+		<>
+			<Helmet>
+				<title>Tuyển sinh - Hệ thống trường quốc tế</title>
+				<meta name="description" content="Helmet application" />
+			</Helmet>
+			<Header />
+			<Breadcrumb links={links} />
+			<Container maxWidth="xl" className={classes.container}>
+				<Typography className={classes.title} variant="h2">
+					Thông tin tuyển sinh
 				</Typography>
 				<Grid container justifyContent="center">
 					<Grid disableSpacing className={classes.gridItem} item md={4} sm={12}>
@@ -98,23 +123,16 @@ const News = () => {
 									component="h2"
 									className={classes.cardTitle}
 								>
-									Lịch sử, không còn là môn học “khó nhằn”nữa…
+									Lớp Học Đầu Tiên Cho Bé
 								</Typography>
-								<Typography
-									variant="h5"
-									component="subtitle1"
-									className={classes.cardSubtitle}
-								>
-									16 Tháng Một, 2019
-								</Typography>
+
 								<Typography
 									variant="body2"
 									component="p"
 									className={classes.cardDesc}
 								>
-									Vào một chiều cuối thu, có một cậu học trò đến bên cạnh tôi
-									thì thầm nói: “ Cô ơi! Con rất thích học Lịch Sử nhưng con lại
-									không thích phải thi cô ạ. Những câu hỏi phải trả ...
+									Lorem Ipsum là gì? Lorem Ipsum chỉ đơn giản là một đoạn văn
+									bản giả, được ...
 								</Typography>
 							</CardContent>
 						</Card>
@@ -132,23 +150,16 @@ const News = () => {
 									component="h2"
 									className={classes.cardTitle}
 								>
-									Back to school: Chào mừng ngày tựu trường năm học
+									Tuyển Sinh Mùa Xuân
 								</Typography>
-								<Typography
-									variant="h5"
-									component="subtitle1"
-									className={classes.cardSubtitle}
-								>
-									16 Tháng Một, 2019
-								</Typography>
+
 								<Typography
 									variant="body2"
 									component="p"
 									className={classes.cardDesc}
 								>
-									Năm học 2018 – 2019 là năm học vô cùng ý nghĩa và đặc biệt đối
-									với Trường Mần Non MONA Kids vì đây là năm học thứ 10 của MONA
-									Kids kể từ khi thành lập. Sau một mùa ...
+									Lorem Ipsum là gì? Lorem Ipsum chỉ đơn giản là một đoạn văn
+									bản giả, được ...
 								</Typography>
 							</CardContent>
 						</Card>
@@ -166,32 +177,26 @@ const News = () => {
 									component="h2"
 									className={classes.cardTitle}
 								>
-									Hello Grade 1 – Cùng con tự tin vào
+									Tuyển Sinh Mùa Hè
 								</Typography>
-								<Typography
-									variant="h5"
-									component="subtitle1"
-									className={classes.cardSubtitle}
-								>
-									16 Tháng Một, 2019
-								</Typography>
+
 								<Typography
 									variant="body2"
 									component="p"
 									className={classes.cardDesc}
 								>
-									Thời gian: 09:00 – 12:00, ngày 12/01/2019 (thứ 7) Địa điểm:
-									Trường Tiểu học MONA Kids, 319 C16 Lý Thường Kiệt, Quận 11,
-									TP.HCM Nếu ở bậc mẫu giáo, các hoạt động vui chơi khám phá là
-									chủ đạo, các bài học ...
+									Lorem Ipsum là gì? Lorem Ipsum chỉ đơn giản là một đoạn văn
+									bản giả, được ...
 								</Typography>
 							</CardContent>
 						</Card>
 					</Grid>
 				</Grid>
 			</Container>
-		</div>
+
+			<Footer />
+		</>
 	);
 };
 
-export default News;
+export default Admission;

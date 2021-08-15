@@ -121,7 +121,10 @@ const Introduction = () => {
 						</Card>
 					</Grid>
 					<Grid item lg={3} md={3} sm={6} xs={12} className={classes.gridItem}>
-						<Card classes={{ root: classes.card }}>
+						<Card
+							classes={{ root: classes.card }}
+							style={{ backgroundColor: "#ff002a" }}
+						>
 							<div className={classes.cardHeader}>
 								<CardMedia
 									component="img"
@@ -152,7 +155,10 @@ const Introduction = () => {
 						</Card>
 					</Grid>
 					<Grid item lg={3} md={3} sm={6} xs={12} className={classes.gridItem}>
-						<Card classes={{ root: classes.card }}>
+						<Card
+							classes={{ root: classes.card }}
+							style={{ backgroundColor: "#003d69" }}
+						>
 							<div className={classes.cardHeader}>
 								<CardMedia
 									component="img"
@@ -183,7 +189,10 @@ const Introduction = () => {
 						</Card>
 					</Grid>
 					<Grid item lg={3} md={3} sm={6} xs={12} className={classes.gridItem}>
-						<Card classes={{ root: classes.card }}>
+						<Card
+							classes={{ root: classes.card }}
+							style={{ backgroundColor: "#3db2d5" }}
+						>
 							<div className={classes.cardHeader}>
 								<CardMedia
 									component="img"

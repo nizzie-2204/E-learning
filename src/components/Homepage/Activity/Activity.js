@@ -9,9 +9,10 @@ import image2 from "assets/images/hoat_dong_1.jpg";
 import image3 from "assets/images/hoat_dong_2.jpg";
 import image4 from "assets/images/hoat_dong_3.jpg";
 import image6 from "assets/images/hoat_dong_5.jpg";
+import { Button } from "@material-ui/core";
 const activityStyle = makeStyles({
 	activity: {
-		padding: "40px 0",
+		padding: "60px 0",
 		backgroundImage: `url(${bgImage})`,
 	},
 	activityTitle: {
@@ -28,6 +29,23 @@ const activityStyle = makeStyles({
 	activityImage: {
 		width: "90%",
 		borderRadius: "50%",
+	},
+	button: {
+		color: "#fff",
+		fontSize: "15px",
+		padding: "10px 30px",
+		margin: "auto",
+		marginTop: "40px",
+		backgroundColor: "#ffb607",
+		borderRadius: "20px",
+		"&:hover": {
+			background: "#003d69",
+		},
+	},
+	container: {
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
 	},
 });
 
@@ -56,7 +74,7 @@ const Activity = () => {
 
 	return (
 		<div className={classes.activity}>
-			<Container maxWidth="xl">
+			<Container maxWidth="xl" className={classes.container}>
 				<Typography className={classes.activityTitle} variant="h2">
 					Ảnh hoạt động
 				</Typography>
@@ -111,6 +129,7 @@ const Activity = () => {
 						/>
 					</div>
 				</Carousel>
+				<Button className={classes.button}>Xem thêm</Button>
 			</Container>
 		</div>
 	);

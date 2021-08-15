@@ -14,7 +14,7 @@ const testimonialStyles = makeStyles((theme) => ({
 		fontSize: "48px",
 		fontWeight: "700",
 		textAlign: "center",
-		color: "#56225e",
+		color: "#000",
 		marginBottom: "60px",
 	},
 	testimonialItem: {
@@ -44,9 +44,11 @@ const testimonialStyles = makeStyles((theme) => ({
 	},
 	itemInfoTitle: {
 		marginBottom: "10px",
+		textAlign: "center",
 	},
 	itemInfoSubtitle: {
 		fontSize: "15px",
+		textAlign: "center",
 	},
 	testimonialGrid: {
 		marginBottom: "40px",
@@ -66,8 +68,8 @@ const Testimonial = () => {
 					<Typography className={classes.testimonialTitle} variant="h2">
 						Phụ Huynh Nói Gì
 					</Typography>
-					<Grid item container className={classes.testimonialGrid} spacing={5}>
-						<Grid item sm={3}>
+					<Grid item container className={classes.testimonialGrid} spacing={4}>
+						<Grid item sm={2}>
 							<div className={classes.testimonialImageContainer}>
 								<img
 									src={image1}
@@ -76,12 +78,13 @@ const Testimonial = () => {
 								/>
 							</div>
 						</Grid>
-						<Grid item sm={9}>
+						<Grid item sm={8}>
 							<div className={classes.testimonialDesc}>
 								<div className={classes.itemInfo}>
 									<Typography variant="h6" className={classes.itemInfoTitle}>
-										Anh Nhựt Tân.Thạc sỹ Nghệ Thuật,Nhà thiết kế thời trang Phụ
-										huynh bé Tâm
+										Anh Nhựt Tân.Thạc sỹ Nghệ Thuật,Nhà thiết kế thời trang
+										<br />
+										Phụ huynh bé Tâm
 									</Typography>
 									<Typography
 										variant="body2"
@@ -89,7 +92,9 @@ const Testimonial = () => {
 									>
 										Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc
 										và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu
-										tố trình bày văn bản. Lorem Ipsum có ưu điểm hơn so với đoạn
+										tố
+										<br />
+										trình bày văn bản. Lorem Ipsum có ưu điểm hơn so với đoạn
 										văn bản chỉ gồm
 									</Typography>
 								</div>
@@ -97,8 +102,8 @@ const Testimonial = () => {
 						</Grid>
 					</Grid>
 
-					<Grid item container className={classes.testimonialGrid} spacing={5}>
-						<Grid item sm={3}>
+					<Grid item container className={classes.testimonialGrid} spacing={4}>
+						<Grid item md={3} sm={2}>
 							<div className={classes.testimonialImageContainer}>
 								<img
 									src={image2}
@@ -107,12 +112,13 @@ const Testimonial = () => {
 								/>
 							</div>
 						</Grid>
-						<Grid item sm={9}>
+						<Grid item sm={8}>
 							<div className={classes.testimonialDesc}>
 								<div className={classes.itemInfo}>
 									<Typography variant="h6" className={classes.itemInfoTitle}>
-										Anh Nhựt Tân.Thạc sỹ Nghệ Thuật,Nhà thiết kế thời trang Phụ
-										huynh bé Tâm
+										Anh Nhựt Tân.Thạc sỹ Nghệ Thuật,Nhà thiết kế thời trang
+										<br />
+										Phụ huynh bé Tâm
 									</Typography>
 									<Typography
 										variant="body2"
@@ -120,7 +126,9 @@ const Testimonial = () => {
 									>
 										Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc
 										và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu
-										tố trình bày văn bản. Lorem Ipsum có ưu điểm hơn so với đoạn
+										tố
+										<br />
+										trình bày văn bản. Lorem Ipsum có ưu điểm hơn so với đoạn
 										văn bản chỉ gồm
 									</Typography>
 								</div>
@@ -128,8 +136,8 @@ const Testimonial = () => {
 						</Grid>
 					</Grid>
 
-					<Grid item container className={classes.testimonialGrid} spacing={5}>
-						<Grid item sm={3}>
+					<Grid item container className={classes.testimonialGrid} spacing={4}>
+						<Grid item md={4} sm={2}>
 							<div className={classes.testimonialImageContainer}>
 								<img
 									src={image3}
@@ -138,12 +146,13 @@ const Testimonial = () => {
 								/>
 							</div>
 						</Grid>
-						<Grid item sm={9}>
+						<Grid item sm={8}>
 							<div className={classes.testimonialDesc}>
 								<div className={classes.itemInfo}>
 									<Typography variant="h6" className={classes.itemInfoTitle}>
-										Anh Nhựt Tân.Thạc sỹ Nghệ Thuật,Nhà thiết kế thời trang Phụ
-										huynh bé Tâm
+										Anh Nhựt Tân.Thạc sỹ Nghệ Thuật,Nhà thiết kế thời trang
+										<br />
+										Phụ huynh bé Tâm
 									</Typography>
 									<Typography
 										variant="body2"
@@ -151,7 +160,9 @@ const Testimonial = () => {
 									>
 										Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc
 										và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu
-										tố trình bày văn bản. Lorem Ipsum có ưu điểm hơn so với đoạn
+										tố
+										<br />
+										trình bày văn bản. Lorem Ipsum có ưu điểm hơn so với đoạn
 										văn bản chỉ gồm
 									</Typography>
 								</div>

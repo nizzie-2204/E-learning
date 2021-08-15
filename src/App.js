@@ -1,30 +1,27 @@
 import "App.css";
-import Header from "components/Homepage/Header/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "utils/theme";
-import Banner from "components/Homepage/Banner/Banner";
-import Introduction from "components/Homepage/Introduction/Introduction";
-import About from "components/Homepage/About/About";
-import Testimonial from "components/Homepage/Testimonial/Testimonial";
-import Activity from "components/Homepage/Activity/Activity";
-import News from "components/Homepage/News/News";
-import Footer from "components/Homepage/Footer/Footer";
+import Home from "pages/Home/Home";
+import Teacher from "pages/Teacher/Teacher";
+import Vision from "pages/Vision/Vision";
+import StudyPrograms from "pages/StudyPrograms/StudyPrograms";
+import Admission from "pages/Admission/Admission";
+import Contact from "pages/Contact/Contact";
 
 function App() {
 	return (
 		<div className="App">
 			<ThemeProvider theme={theme}>
 				<Router>
-					<Header />
-					<Banner />
-					<Introduction />
-					<About />
-					<News />
-					<Activity />
-					<Testimonial />
-					<Footer />
-					<Switch></Switch>
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route exact path="/teacher" component={Teacher} />
+						<Route exact path="/vision" component={Vision} />
+						<Route exact path="/programs" component={StudyPrograms} />
+						<Route exact path="/admission" component={Admission} />
+						<Route exact path="/contact" component={Contact} />
+					</Switch>
 				</Router>
 			</ThemeProvider>
 		</div>

@@ -7,8 +7,11 @@ import {
 	ListItemIcon,
 	ListItemText,
 	makeStyles,
+	MenuItem,
+	Menu,
 	Toolbar,
 	Typography,
+	Button,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import logo from "assets/images/logo.png";
@@ -61,6 +64,7 @@ const headerStyles = makeStyles((theme) => ({
 		borderRadius: "28px",
 		padding: "15px 0",
 		overflow: "hidden",
+		transition: "0.2s",
 	},
 	navItemDropdown: {
 		padding: "8px 25px",
@@ -123,7 +127,7 @@ const Header = () => {
 							}}
 							disableGutters
 							component={RouterLink}
-							to="/"
+							to="/teacher"
 						>
 							<ListItemText
 								disableTypography
@@ -140,7 +144,7 @@ const Header = () => {
 											className={classes.navItemDropdown}
 											disableGutters
 											component={RouterLink}
-											to="/"
+											to="/teacher"
 										>
 											<ListItemText
 												disableTypography
@@ -154,29 +158,12 @@ const Header = () => {
 												}
 											></ListItemText>
 										</ListItem>
+
 										<ListItem
 											className={classes.navItemDropdown}
 											disableGutters
 											component={RouterLink}
-											to="/"
-										>
-											<ListItemText
-												disableTypography
-												primary={
-													<Typography
-														type="body2"
-														className={classes.navItemTextDropdown}
-													>
-														Lời ngỏ
-													</Typography>
-												}
-											></ListItemText>
-										</ListItem>
-										<ListItem
-											className={classes.navItemDropdown}
-											disableGutters
-											component={RouterLink}
-											to="/"
+											to="/vision"
 										>
 											<ListItemText
 												disableTypography
@@ -194,6 +181,7 @@ const Header = () => {
 								</div>
 							)}
 						</ListItem>
+
 						<ListItem
 							onMouseOver={() => {
 								setOpenDropdown(true);
@@ -204,7 +192,7 @@ const Header = () => {
 							disableGutters
 							className={classes.dropdown}
 							component={RouterLink}
-							to="/"
+							to="/programs"
 						>
 							<ListItemText
 								disableTypography
@@ -221,7 +209,7 @@ const Header = () => {
 											className={classes.navItemDropdown}
 											disableGutters
 											component={RouterLink}
-											to="/"
+											to="/programs"
 										>
 											<ListItemText
 												disableTypography
@@ -239,7 +227,7 @@ const Header = () => {
 											className={classes.navItemDropdown}
 											disableGutters
 											component={RouterLink}
-											to="/"
+											to="/programs"
 										>
 											<ListItemText
 												disableTypography
@@ -257,7 +245,7 @@ const Header = () => {
 											className={classes.navItemDropdown}
 											disableGutters
 											component={RouterLink}
-											to="/"
+											to="/programs"
 										>
 											<ListItemText
 												disableTypography
@@ -275,7 +263,7 @@ const Header = () => {
 								</div>
 							)}
 						</ListItem>
-						<ListItem disableGutters component={RouterLink} to="/">
+						<ListItem disableGutters component={RouterLink} to="/admission">
 							<ListItemText
 								disableTypography
 								primary={
@@ -285,7 +273,7 @@ const Header = () => {
 								}
 							></ListItemText>
 						</ListItem>
-						<ListItem disableGutters component={RouterLink} to="/">
+						<ListItem disableGutters component={RouterLink} to="/contact">
 							<ListItemText
 								disableTypography
 								primary={
