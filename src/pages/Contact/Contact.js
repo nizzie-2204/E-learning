@@ -1,16 +1,10 @@
+import { Button, Container, TextField, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import Breadcrumb from "components/Homepage/Breadcrumb/Breadcrumb";
+import Footer from "components/Homepage/Footer/Footer";
+import Header from "components/Homepage/Header/Header";
 import React from "react";
 import { Helmet } from "react-helmet";
-import Header from "components/Homepage/Header/Header";
-import Breadcrumb from "components/Homepage/Breadcrumb/Breadcrumb";
-import {
-	Button,
-	Container,
-	Grid,
-	TextField,
-	Typography,
-} from "@material-ui/core";
-import { makeStyles, withStyles } from "@material-ui/styles";
-import Footer from "components/Homepage/Footer/Footer";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -100,7 +94,7 @@ const Contact = () => {
 	return (
 		<>
 			<Helmet>
-				<title>liên hệ - Hệ thống trường quốc tế</title>
+				<title>Liên hệ - Hệ thống trường quốc tế</title>
 				<meta name="description" content="Helmet application" />
 			</Helmet>
 			<Header />
@@ -152,11 +146,14 @@ const Contact = () => {
 					</div>
 					<div className={classes.inputGroup}>
 						<TextField
+							label="Lời nhắn"
 							variant="outlined"
-							placeholder="Lời nhắn"
 							multiline
 							rows={6}
 							className={classes.textArea}
+							InputLabelProps={{
+								style: { color: "#000" },
+							}}
 						/>
 					</div>
 					<Button

@@ -5,6 +5,7 @@ import {
 	Drawer,
 	IconButton,
 	ListItemIcon,
+	Collapse,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/styles";
@@ -30,34 +31,37 @@ const drawerStyle = makeStyles({
 		flexDirection: "column",
 		backgroundColor: "#fff",
 	},
-	navItem: {
-		padding: "15px 20px !important",
-	},
 	navItemText: {
 		fontSize: "18px",
 		fontWeight: "700",
 		textTransform: "uppercase",
 		color: "#000",
 		"&:hover": {
-			color: "#ffb607",
+			color: "#fff",
 		},
 	},
 	navItemTextDropdown: {
-		display: "flex",
-		alignItems: "flex-start",
 		fontSize: "14px",
 		fontWeight: "700",
 		textTransform: "uppercase",
 		color: "#000",
-		border: "none !important",
+		padding: "0 30px",
+		transition: "0.2s",
 		"&:hover": {
-			color: "#ffb607",
+			color: "#fff",
 		},
 	},
 	navItemDropdown: {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "flex-start",
+		padding: "10px 16px",
+
+		"&:hover": {
+			"& $navItemText": {
+				color: "#fff",
+			},
+		},
 	},
 	borderNone: {
 		border: "none !important",
@@ -67,10 +71,23 @@ const drawerStyle = makeStyles({
 const ListItem = withStyles({
 	root: {
 		color: "#393d72",
-		padding: "25px 20px",
-		borderBottom: "1px solid #ddd",
+		transition: "0.2s",
 		"&:hover": {
-			color: "#dd006d",
+			boxShadow: "none",
+			backgroundColor: "#ffb607",
+		},
+	},
+})(MuiListItem);
+
+const ListItemDropdown = withStyles({
+	root: {
+		color: "#393d72",
+		cursor: "pointer",
+		padding: "6px 0",
+		"&:hover": {
+			boxShadow: "none",
+			backgroundColor: "#ffb607",
+			color: "#fff",
 		},
 	},
 })(MuiListItem);
@@ -82,16 +99,13 @@ const DrawerComponent = () => {
 		setMobileOpen(!mobileOpen);
 	};
 
-	const [openDropdown, setOpenDropdown] = useState(false);
-	const handleOpenDropdown = () => {
-		setOpenDropdown(!openDropdown);
-		setOpenDropdown2(false);
+	const [open, setOpen] = useState(false);
+	const [open2, setOpen2] = useState(false);
+	const handleClick = () => {
+		setOpen(!open);
 	};
-
-	const [openDropdown2, setOpenDropdown2] = useState(false);
-	const handleOpenDropdown2 = () => {
-		setOpenDropdown2(!openDropdown2);
-		setOpenDropdown(false);
+	const handleClick2 = () => {
+		setOpen2(!open2);
 	};
 
 	return (
@@ -126,9 +140,10 @@ const DrawerComponent = () => {
 							}
 						></ListItemText>
 					</ListItem>
+
 					<ListItem
 						component={RouterLink}
-						to="/"
+						to="/teacher"
 						className={`${classes.navItem} ${classes.navItemDropdown}`}
 					>
 						<div
@@ -149,76 +164,46 @@ const DrawerComponent = () => {
 							<ListItemIcon>
 								<ExpandMoreIcon
 									style={{ color: "#000", marginLeft: "auto" }}
-									onClick={handleOpenDropdown2}
+									onClick={handleClick}
 								/>
 							</ListItemIcon>
 						</div>
-
-						{openDropdown2 && (
-							<div className={classes.navItemDropdown}>
-								<List component="nav" disablePadding>
-									<ListItem
-										className={`${classes.navItem} ${classes.borderNone}`}
-										disableGutters
-										component={RouterLink}
-										to="/"
-									>
-										<ListItemText
-											disableTypography
-											primary={
-												<Typography
-													type="body2"
-													className={classes.navItemTextDropdown}
-												>
-													Đội ngủ giáo viên
-												</Typography>
-											}
-										></ListItemText>
-									</ListItem>
-									<ListItem
-										className={`${classes.navItem} ${classes.borderNone}`}
-										disableGutters
-										component={RouterLink}
-										to="/"
-									>
-										<ListItemText
-											disableTypography
-											primary={
-												<Typography
-													type="body2"
-													className={classes.navItemTextDropdown}
-												>
-													Lời ngỏ
-												</Typography>
-											}
-										></ListItemText>
-									</ListItem>
-									<ListItem
-										className={`${classes.navItem} ${classes.borderNone}`}
-										disableGutters
-										component={RouterLink}
-										to="/"
-									>
-										<ListItemText
-											disableTypography
-											primary={
-												<Typography
-													type="body2"
-													className={classes.navItemTextDropdown}
-												>
-													Tầm nhìn và sứ mệnh
-												</Typography>
-											}
-										></ListItemText>
-									</ListItem>
-								</List>
-							</div>
-						)}
 					</ListItem>
+					<Collapse in={open} timeout="auto" unmountOnExit>
+						<List component="div" disablePadding>
+							<ListItemDropdown component={RouterLink} to="/teacher">
+								<ListItemText
+									disableTypography
+									primary={
+										<Typography
+											type="body2"
+											className={classes.navItemTextDropdown}
+										>
+											Đội ngũ giáo viên
+										</Typography>
+									}
+								></ListItemText>
+							</ListItemDropdown>
+
+							<ListItemDropdown component={RouterLink} to="/vision">
+								<ListItemText
+									disableTypography
+									primary={
+										<Typography
+											type="body2"
+											className={classes.navItemTextDropdown}
+										>
+											Tầm nhìn và sứ mệnh
+										</Typography>
+									}
+								></ListItemText>
+							</ListItemDropdown>
+						</List>
+					</Collapse>
+
 					<ListItem
-						style={{ position: "relative" }}
 						component={RouterLink}
-						to="/"
+						to="/programs"
 						className={`${classes.navItem} ${classes.navItemDropdown}`}
 					>
 						<div
@@ -232,79 +217,62 @@ const DrawerComponent = () => {
 								disableTypography
 								primary={
 									<Typography type="body2" className={classes.navItemText}>
-										Chương trình học
+										Chương trình
 									</Typography>
 								}
 							></ListItemText>
 							<ListItemIcon>
 								<ExpandMoreIcon
 									style={{ color: "#000", marginLeft: "auto" }}
-									onClick={handleOpenDropdown}
+									onClick={handleClick2}
 								/>
 							</ListItemIcon>
 						</div>
-
-						{openDropdown && (
-							<div className={classes.navItemDropdown}>
-								<List component="nav" disablePadding>
-									<ListItem
-										className={`${classes.navItem} ${classes.borderNone}`}
-										disableGutters
-										component={RouterLink}
-										to="/"
-									>
-										<ListItemText
-											disableTypography
-											primary={
-												<Typography
-													type="body2"
-													className={classes.navItemTextDropdown}
-												>
-													Tư vấn giáo dục
-												</Typography>
-											}
-										></ListItemText>
-									</ListItem>
-									<ListItem
-										className={`${classes.navItem} ${classes.borderNone}`}
-										disableGutters
-										component={RouterLink}
-										to="/"
-									>
-										<ListItemText
-											disableTypography
-											primary={
-												<Typography
-													type="body2"
-													className={classes.navItemTextDropdown}
-												>
-													Chương trình giáo dục
-												</Typography>
-											}
-										></ListItemText>
-									</ListItem>
-									<ListItem
-										className={`${classes.navItem} ${classes.borderNone}`}
-										disableGutters
-										component={RouterLink}
-										to="/"
-									>
-										<ListItemText
-											disableTypography
-											primary={
-												<Typography
-													type="body2"
-													className={classes.navItemTextDropdown}
-												>
-													Phương pháp giáo dục
-												</Typography>
-											}
-										></ListItemText>
-									</ListItem>
-								</List>
-							</div>
-						)}
 					</ListItem>
+					<Collapse in={open2} timeout="auto" unmountOnExit>
+						<List component="div" disablePadding>
+							<ListItemDropdown component={RouterLink} to="/programs">
+								<ListItemText
+									disableTypography
+									primary={
+										<Typography
+											type="body2"
+											className={classes.navItemTextDropdown}
+										>
+											Tư vấn giáo dục
+										</Typography>
+									}
+								></ListItemText>
+							</ListItemDropdown>
+							<ListItemDropdown component={RouterLink} to="/programs">
+								<ListItemText
+									disableTypography
+									primary={
+										<Typography
+											type="body2"
+											className={classes.navItemTextDropdown}
+										>
+											Chương trình giáo dục
+										</Typography>
+									}
+								></ListItemText>
+							</ListItemDropdown>
+							<ListItemDropdown component={RouterLink} to="/programs">
+								<ListItemText
+									disableTypography
+									primary={
+										<Typography
+											type="body2"
+											className={classes.navItemTextDropdown}
+										>
+											Phương pháp giáo dục
+										</Typography>
+									}
+								></ListItemText>
+							</ListItemDropdown>
+						</List>
+					</Collapse>
+
 					<ListItem component={RouterLink} to="/" className={classes.navItem}>
 						<ListItemText
 							disableTypography

@@ -30,15 +30,47 @@ const newsStyles = makeStyles((theme) => ({
 		maxWidth: 345,
 		height: "100%",
 		textDecoration: "none",
-		boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-		transition: "all 0.1s cubic-bezier(.25,.8,.25,1)",
-		" &:hover": {
-			boxShadow: " 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
+		position: "relative",
+		boxShadow: "0",
+		border: "0",
+		overflow: "hidden",
+
+		"&::before, &::after": {
+			position: "absolute",
+			content: "''",
+			width: "10%",
+			height: "10%",
+			backgroundColor: "transparent",
+			border: "2px solid #ffb607",
+			transition: "all 0.4s cubic-bezier(.25,.8,.25,1)",
+		},
+		"&::before": {
+			top: "0",
+			left: "0",
+			borderBottom: "none",
+			borderRight: "none",
+		},
+		"&::after": {
+			bottom: "0",
+			right: "0",
+			borderTop: "none",
+			borderLeft: "none",
+		},
+		"&:hover": {
+			"&::before, &::after": {
+				width: "100%",
+				height: "100%",
+			},
+			// "& $media": {
+			// 	transform: "scale3d(1.05, 1.05, 1)",
+			// },
 		},
 	},
 	media: {
 		height: 0,
 		paddingTop: "56.25%", // 16:9
+		transition: "0.2s",
+		overflow: "hidden",
 	},
 	expand: {
 		transform: "rotate(0deg)",
@@ -86,7 +118,12 @@ const News = () => {
 				</Typography>
 				<Grid container justifyContent="center">
 					<Grid disableSpacing className={classes.gridItem} item md={4} sm={12}>
-						<Card className={classes.root} component={RouterLink} to="/">
+						<Card
+							elevation={0}
+							className={classes.root}
+							component={RouterLink}
+							to="/"
+						>
 							<CardMedia
 								className={classes.media}
 								image={image1}
@@ -120,7 +157,12 @@ const News = () => {
 						</Card>
 					</Grid>
 					<Grid disableSpacing className={classes.gridItem} item md={4} sm={12}>
-						<Card className={classes.root} component={RouterLink} to="/">
+						<Card
+							elevation={0}
+							className={classes.root}
+							component={RouterLink}
+							to="/"
+						>
 							<CardMedia
 								className={classes.media}
 								image={image2}
@@ -154,7 +196,12 @@ const News = () => {
 						</Card>
 					</Grid>
 					<Grid disableSpacing className={classes.gridItem} item md={4} sm={12}>
-						<Card className={classes.root} component={RouterLink} to="/">
+						<Card
+							elevation={0}
+							className={classes.root}
+							component={RouterLink}
+							to="/"
+						>
 							<CardMedia
 								className={classes.media}
 								image={image3}

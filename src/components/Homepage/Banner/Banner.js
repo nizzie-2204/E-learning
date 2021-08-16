@@ -7,13 +7,16 @@ import bgImage1 from "assets/images/slider1.jpg";
 import { Button, Typography } from "@material-ui/core";
 import Fade from "react-reveal/Fade";
 
-const bannerStyle = makeStyles({
+const bannerStyle = makeStyles((theme) => ({
 	banner: {
-		marginTop: "89px",
+		marginTop: "87px",
 		height: "700px",
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
+		[theme.breakpoints.down("md")]: {
+			marginTop: "67px",
+		},
 	},
 	container: {
 		height: "100%",
@@ -54,7 +57,7 @@ const bannerStyle = makeStyles({
 			backgroundColor: "#fff",
 		},
 	},
-});
+}));
 
 const Banner = () => {
 	const classes = bannerStyle();

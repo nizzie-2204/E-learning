@@ -40,11 +40,13 @@ const testimonialStyles = makeStyles((theme) => ({
 	testimonialDesc: {
 		height: "100%",
 		display: "flex",
+		transition: "0.2s",
 		alignItems: "center",
 	},
 	itemInfoTitle: {
 		marginBottom: "10px",
 		textAlign: "center",
+		transition: "0.2s",
 	},
 	itemInfoSubtitle: {
 		fontSize: "15px",
@@ -54,6 +56,15 @@ const testimonialStyles = makeStyles((theme) => ({
 		marginBottom: "40px",
 		[theme.breakpoints.down("sm")]: {
 			justifyContent: "center",
+		},
+
+		"&:hover": {
+			"& $itemInfoTitle": {
+				color: "#ffb607",
+			},
+			"& $testimonialDesc": {
+				transform: "translateY(-10px)",
+			},
 		},
 	},
 }));
