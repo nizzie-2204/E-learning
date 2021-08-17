@@ -8,19 +8,23 @@ import Vision from "pages/Vision/Vision";
 import StudyPrograms from "pages/StudyPrograms/StudyPrograms";
 import Admission from "pages/Admission/Admission";
 import Contact from "pages/Contact/Contact";
+import Login from "features/Login/Login";
+import Header from "components/Dashboard/Header/Header";
 
 function App() {
 	return (
 		<div className="App">
 			<ThemeProvider theme={theme}>
 				<Router>
+					<Header />
 					<Switch>
-						<Route exact path="/" component={Home} />
+						{/* <Route exact path="/" component={Home} />
 						<Route exact path="/teacher" component={Teacher} />
 						<Route exact path="/vision" component={Vision} />
 						<Route exact path="/programs" component={StudyPrograms} />
 						<Route exact path="/admission" component={Admission} />
 						<Route exact path="/contact" component={Contact} />
+						<Route exact path="/login" component={Login} /> */}
 					</Switch>
 				</Router>
 			</ThemeProvider>

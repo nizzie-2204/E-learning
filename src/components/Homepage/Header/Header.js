@@ -8,7 +8,6 @@ import {
 	ListItemText,
 	makeStyles,
 	MenuItem,
-	Menu,
 	Toolbar,
 	Typography,
 	Button,
@@ -19,11 +18,19 @@ import React from "react";
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import DrawerComponent from "./DrawerComponent/DrawerComponent";
+import {
+	usePopupState,
+	bindHover,
+	bindMenu,
+} from "material-ui-popup-state/hooks";
+import Menu from "material-ui-popup-state/HoverMenu";
 
 const headerStyles = makeStyles((theme) => ({
 	header: {
-		padding: "10px 0",
 		backgroundColor: "#fff",
+		height: "90px",
+		display: "flex",
+		justifyContent: "center",
 	},
 	logo: {
 		width: "250px",
@@ -33,6 +40,7 @@ const headerStyles = makeStyles((theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
+		padding: "0",
 	},
 	navItemText: {
 		fontSize: "15px",
@@ -40,31 +48,27 @@ const headerStyles = makeStyles((theme) => ({
 		textTransform: "uppercase",
 		textAlign: "center",
 		color: "#000",
-		padding: "0",
-		"&:hover": {
-			color: "#ffb607",
-		},
-	},
-	login: {
-		textDecoration: "none",
-		backgroundColor: "#ffb607",
-		padding: "11px 23px",
-		borderRadius: "20px",
-		"&:hover": {
-			background: "#003d69",
-		},
-	},
-	listDropdown: {
-		position: "absolute",
-		top: "44px",
-		left: "-25px",
-		width: "250px",
-		color: "#fff",
-		backgroundColor: "#ffb607",
-		borderRadius: "28px",
-		padding: "15px 0",
-		overflow: "hidden",
+		backgroundColor: "transparent",
+		boxShadow: "none",
+		borderRadius: "0",
+		padding: "32px 25px",
 		transition: "0.2s",
+		position: "relative",
+		"&:hover": {
+			boxShadow: "none",
+			backgroundColor: "#ffb607",
+			color: "#fff",
+		},
+		[theme.breakpoints.down("md")]: {
+			padding: "32px 10px",
+		},
+	},
+
+	listDropdown: {
+		marginTop: "65px",
+		backgroundColor: "#fff",
+		padding: "0",
+		borderRadius: "0",
 	},
 	navItemDropdown: {
 		padding: "8px 25px",
@@ -78,6 +82,12 @@ const headerStyles = makeStyles((theme) => ({
 		textTransform: "uppercase",
 		color: "#000",
 		transition: "0.2s",
+		backgroundColor: "#fff",
+		padding: "12px 24px",
+		"&:hover": {
+			backgroundColor: "#ffb607",
+			color: "#fff",
+		},
 	},
 	dropdown: {
 		position: "relative",
@@ -93,12 +103,26 @@ const headerStyles = makeStyles((theme) => ({
 			height: "50px",
 		},
 	},
+	loginText: {
+		fontSize: "14px",
+		fontWeight: "700",
+		textTransform: "uppercase",
+		textDecoration: "none",
+		color: "#fff",
+		transition: "0.2s",
+		backgroundColor: "#ffb607",
+		padding: "15px 30px",
+		borderRadius: "8px",
+		"&:hover": {
+			backgroundColor: "#007bff",
+		},
+	},
 }));
 
 const Header = () => {
 	const classes = headerStyles();
-	const [openDropdown, setOpenDropdown] = useState(false);
-	const [openDropdown2, setOpenDropdown2] = useState(false);
+	const popupState1 = usePopupState({ variant: "popover", popupId: "menu1" });
+	const popupState2 = usePopupState({ variant: "popover", popupId: "menu2" });
 
 	return (
 		<AppBar position="fixed" className={classes.header}>
@@ -108,191 +132,124 @@ const Header = () => {
 				</RouterLink>
 				<Hidden smDown implementation="js">
 					<List component="nav" className={classes.nav}>
-						<ListItem disableGutters component={RouterLink} to="/">
-							<ListItemText
-								disableTypography
-								primary={
-									<Typography type="body2" className={classes.navItemText}>
-										Trang chủ
-									</Typography>
-								}
-							></ListItemText>
-						</ListItem>
-						<ListItem
-							onMouseOver={() => {
-								setOpenDropdown2(true);
-							}}
-							onMouseLeave={() => {
-								setOpenDropdown2(false);
-							}}
-							disableGutters
+						<Button
+							className={classes.navItemText}
+							variant="contained"
+							component={RouterLink}
+							to="/"
+							disableRipple
+						>
+							Trang chủ
+						</Button>
+						<Button
+							className={classes.navItemText}
+							variant="contained"
 							component={RouterLink}
 							to="/teacher"
+							{...bindHover(popupState1)}
+							disableRipple
 						>
-							<ListItemText
-								disableTypography
-								primary={
-									<Typography type="body2" className={classes.navItemText}>
-										Giới thiệu
-									</Typography>
-								}
-							></ListItemText>
-							{openDropdown2 && (
-								<div className={classes.listDropdown}>
-									<List component="div" disablePadding>
-										<ListItem
-											className={classes.navItemDropdown}
-											disableGutters
-											component={RouterLink}
-											to="/teacher"
-										>
-											<ListItemText
-												disableTypography
-												primary={
-													<Typography
-														type="body2"
-														className={classes.navItemTextDropdown}
-													>
-														Đội ngủ giáo viên
-													</Typography>
-												}
-											></ListItemText>
-										</ListItem>
-
-										<ListItem
-											className={classes.navItemDropdown}
-											disableGutters
-											component={RouterLink}
-											to="/vision"
-										>
-											<ListItemText
-												disableTypography
-												primary={
-													<Typography
-														type="body2"
-														className={classes.navItemTextDropdown}
-													>
-														Tầm nhìn và sứ mệnh
-													</Typography>
-												}
-											></ListItemText>
-										</ListItem>
-									</List>
-								</div>
-							)}
-						</ListItem>
-
-						<ListItem
-							onMouseOver={() => {
-								setOpenDropdown(true);
+							Giới thiệu
+						</Button>
+						<Menu
+							{...bindMenu(popupState1)}
+							classes={{ paper: classes.listDropdown }}
+							MenuListProps={{
+								disablePadding: true,
 							}}
-							onMouseLeave={() => {
-								setOpenDropdown(false);
-							}}
-							disableGutters
-							className={classes.dropdown}
+						>
+							<MenuItem
+								selected={false}
+								className={classes.navItemTextDropdown}
+								onClick={popupState1.close}
+								component={RouterLink}
+								to="/teacher"
+								disableRipple
+							>
+								Đội ngũ giáo viên
+							</MenuItem>
+							<MenuItem
+								selected={false}
+								className={classes.navItemTextDropdown}
+								onClick={popupState1.close}
+								component={RouterLink}
+								to="/vision"
+								disableRipple
+							>
+								Tầm nhìn và sứ mệnh
+							</MenuItem>
+						</Menu>
+						<Button
+							className={classes.navItemText}
+							variant="contained"
 							component={RouterLink}
 							to="/programs"
+							{...bindHover(popupState2)}
+							disableRipple
 						>
-							<ListItemText
-								disableTypography
-								primary={
-									<Typography type="body2" className={classes.navItemText}>
-										Chương trình
-									</Typography>
-								}
-							></ListItemText>
-							{openDropdown && (
-								<div className={classes.listDropdown}>
-									<List component="div" disablePadding>
-										<ListItem
-											className={classes.navItemDropdown}
-											disableGutters
-											component={RouterLink}
-											to="/programs"
-										>
-											<ListItemText
-												disableTypography
-												primary={
-													<Typography
-														type="body2"
-														className={classes.navItemTextDropdown}
-													>
-														Tư vấn giáo dục
-													</Typography>
-												}
-											></ListItemText>
-										</ListItem>
-										<ListItem
-											className={classes.navItemDropdown}
-											disableGutters
-											component={RouterLink}
-											to="/programs"
-										>
-											<ListItemText
-												disableTypography
-												primary={
-													<Typography
-														type="body2"
-														className={classes.navItemTextDropdown}
-													>
-														Chương trình giáo dục
-													</Typography>
-												}
-											></ListItemText>
-										</ListItem>
-										<ListItem
-											className={classes.navItemDropdown}
-											disableGutters
-											component={RouterLink}
-											to="/programs"
-										>
-											<ListItemText
-												disableTypography
-												primary={
-													<Typography
-														type="body2"
-														className={classes.navItemTextDropdown}
-													>
-														Phương pháp giáo dục
-													</Typography>
-												}
-											></ListItemText>
-										</ListItem>
-									</List>
-								</div>
-							)}
-						</ListItem>
-						<ListItem disableGutters component={RouterLink} to="/admission">
-							<ListItemText
-								disableTypography
-								primary={
-									<Typography type="body2" className={classes.navItemText}>
-										Tuyển sinh
-									</Typography>
-								}
-							></ListItemText>
-						</ListItem>
-						<ListItem disableGutters component={RouterLink} to="/contact">
-							<ListItemText
-								disableTypography
-								primary={
-									<Typography type="body2" className={classes.navItemText}>
-										Liên hệ
-									</Typography>
-								}
-							></ListItemText>
-						</ListItem>
+							Chương trình
+						</Button>
+						<Menu
+							{...bindMenu(popupState2)}
+							classes={{ paper: classes.listDropdown }}
+							MenuListProps={{
+								disablePadding: true,
+							}}
+						>
+							<MenuItem
+								selected={false}
+								className={classes.navItemTextDropdown}
+								onClick={popupState2.close}
+								component={RouterLink}
+								to="/programs"
+								disableRipple
+							>
+								Tư vấn giáo dục
+							</MenuItem>
+							<MenuItem
+								selected={false}
+								className={classes.navItemTextDropdown}
+								onClick={popupState2.close}
+								component={RouterLink}
+								to="/programs"
+								disableRipple
+							>
+								Chương trình giáo dục
+							</MenuItem>
+							<MenuItem
+								selected={false}
+								className={classes.navItemTextDropdown}
+								onClick={popupState2.close}
+								component={RouterLink}
+								to="/programs"
+								disableRipple
+							>
+								Phương pháp giáo dục
+							</MenuItem>
+						</Menu>
+
+						<Button
+							className={classes.navItemText}
+							variant="contained"
+							component={RouterLink}
+							to="/admission"
+							disableRipple
+						>
+							Tuyển sinh
+						</Button>
+						<Button
+							className={classes.navItemText}
+							variant="contained"
+							component={RouterLink}
+							to="/contact"
+							disableRipple
+						>
+							Liên hệ
+						</Button>
 					</List>
 
-					<RouterLink to="/login" className={classes.login}>
-						<Typography
-							variant="body2"
-							style={{ color: "#fff" }}
-							className={classes.navItemText}
-						>
-							Đăng nhập
-						</Typography>
+					<RouterLink to="/login" className={classes.loginText}>
+						Đăng nhập
 					</RouterLink>
 				</Hidden>
 				<Hidden mdUp implementation="js">
