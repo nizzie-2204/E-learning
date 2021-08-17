@@ -10,6 +10,7 @@ import Admission from "pages/Admission/Admission";
 import Contact from "pages/Contact/Contact";
 import Login from "features/Login/Login";
 import Header from "components/Dashboard/Header/Header";
+import Sidebar from "components/Dashboard/Sidebar/Sidebar";
 
 function App() {
 	return (
@@ -27,6 +28,7 @@ function App() {
 						<Route exact path="/contact" component={Contact} />
 						<Route exact path="/login" component={Login} /> */}
 					</Switch>
+					<Sidebar />
 				</Router>
 			</ThemeProvider>
 		</div>
