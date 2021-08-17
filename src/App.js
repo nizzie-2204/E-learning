@@ -16,8 +16,9 @@ function App() {
 		<div className="App">
 			<ThemeProvider theme={theme}>
 				<Router>
-					<Header />
 					<Switch>
+						<Route exact path="/admin" component={Header} />
+
 						{/* <Route exact path="/" component={Home} />
 						<Route exact path="/teacher" component={Teacher} />
 						<Route exact path="/vision" component={Vision} />
